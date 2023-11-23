@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/daisyui@4.3.1/dist/full.min.css" rel="stylesheet" type="text/css" /> -->
+</head>
+
+<body>
+
+    <div class="main-div">
+        <h1 class="main-head">CREATE ACCOUNT</h1>
+        <div>
+            <button class="main-btn1"><i class="icon fa-brands fa-instagram"></i></i></button>
+            <button class="main-btn"><i class="icon fa-brands fa-twitter"></i></button>
+            <button class="main-btn"><i class="icon fa-brands fa-linkedin"></i></button>
+        </div>
+        <div>
+            <form id="btn">
+                <p class="main-p1">NAME:</p>
+                <input class="main-input" id="name" type="text" placeholder="Enter your name">
+                <p class="main-p">LAST NAME:</p>
+                <input class="main-input" id="lastname" type="text" placeholder="Enter your NAME">
+                <p class="main-p">EMAIL:</p>
+                <input class="main-input" id="email" type="email" placeholder="Enter your email">
+                <p id="email-used"></p>
+                <p class="main-p">COUNTRY:</p>
+                <input class="main-input" id="country" type="text" placeholder="Enter your country">
+                <p class="main-p">PASSWORD:</p>
+                <input type="password" id="password" class="main-input" placeholder="Enter your Password">
+                <p class="main-p">Already have an account: <span><a href="login.html">login</a></span></p>
+        <!-- </div> -->
+        <button type="submit" id="register-btn" class="register-btn">SIGN UP</button>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://kit.fontawesome.com/395827b13c.js" crossorigin="anonymous"></script>
+    <script type="module" src="register.js"></script>
+</body>
+
+</html>
