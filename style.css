@@ -178,6 +178,10 @@
         margin-top: 10px;
     }
 
+    .home-head{
+        font-family: 'Poppins', sans-serif;
+    }
+
     .increase{
        margin-top: 10px;
        margin-left: 10px;
@@ -238,7 +242,7 @@
     }
     .main-head{
         margin-top: 30px;
-        color: #00b4a2;
+        color: orange;
         text-align: center;
         font-family: 'Poppins', sans-serif;
     }
@@ -289,8 +293,8 @@
         font-family: 'Poppins', sans-serif;
         margin-bottom: 30px;
         color: white;
-        border-color:   #00b4a2;
-        background-color:  #00b4a2;
+        background-color:  orange;
+        border-color: orange; 
     }
     .login-input{
         width: 70%;
@@ -306,12 +310,12 @@
         font-family: 'Poppins', sans-serif;
         margin-bottom: 30px;
         color: white;
-        border-color:   #00b4a2;
-        background-color:  #00b4a2;
+        border-color:   orange;
+        background-color:  orange;
     }
     .main-head2{
         margin-top: 50px;
-        color: #00b4a2;
+        color: orange;
         margin-left: 80px ;
         margin-bottom: 40px;
         font-family: 'Poppins', sans-serif;
@@ -328,18 +332,24 @@
     }
 
     .main-btn1login{
-        border-color: #00b4a2;
+        border-color: orange;
         color: white;
-        background-color: #00b4a2;
+        background-color: orange;
         border-radius: 100%;
         margin-left: 35%;
         margin-top: 20px;
+        cursor:pointer ;
         padding: 12px 14px 12px 14px;
+    }
+    .image{
+        margin-top: 10px;
+        margin-left: 80px;
     }
     .main-btnlogin{
         color: white;
-        border-color: #00b4a2;
-        background-color: #00b4a2;
+        border-color: orange;
+        cursor: pointer;
+        background-color: orange;
         border-radius: 100%;
         margin-left: 10px;
         margin-top: 20px;

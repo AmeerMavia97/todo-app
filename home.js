@@ -7,6 +7,8 @@ const submit = document.querySelector("#submit")
 let description = document.querySelector('#description')
 const usernames = document.querySelector("#names")
 
+const pimg = document.querySelector("#profileimg");
+
 let uid;
 // IF USER IS NOT LOGIN SO RUN THIS FUNCTION
 onAuthStateChanged(auth, async (user) => {
@@ -17,11 +19,15 @@ onAuthStateChanged(auth, async (user) => {
     const querySnapshot = await getDocs(q) 
     querySnapshot.forEach((item) => {
       console.log(item.data().uid);
-      console.log(item.data().name); 
+      console.log(item.data().name);
+      console.log(item.data().posturl); 
       usernames.innerHTML = item.data().name
+      pimg.src = item.data().posturl
+  
   });
+  getDataFromFirestore(user.uid)
   } else {
-    window.location = "./login.html"
+    window.location = "index.html"
   }
 });
 
@@ -29,7 +35,7 @@ onAuthStateChanged(auth, async (user) => {
 const logout = document.querySelector("#logout-btn")
 logout.addEventListener("click", () => {
   signOut(auth).then(() => {
-    window.location = "./login.html"
+    window.location = "index.html"
   }).catch((error) => {
     console.log(error);
 
@@ -45,12 +51,12 @@ function printdata() {
   div.innerHTML = '';
   arr.map((item) => {
     div.innerHTML += `
-  <div class="bg-[#0b172a] mt-9 pt-1 pb-3 rounded-lg mr-[28%] ml-[28%]">
+  <div class=" mt-9 pt-1 pb-3 rounded-lg mr-[28%] ml-[28%] border-gray-500 border-[1px] border-solid">
      <div class="flex justify-between">
-        <h1 class="text-white mt-3 ml-3" ><span class="font-bold text-sky-300" >ITEM : </span>${item.description}</h1>
+        <h1 class="text-gray-500 mt-3 ml-3" ><span class="font-bold text-black" >ITEM : </span>${item.description}</h1>
         <div class="mt-3 mr-3">
-           <button id= "update"><i class="text-sky-300 mr-3 fa-solid fa-pen-to-square"></i></button>
-           <button id="delete"><i class=" text-sky-300 fa-solid fa-trash"></i></button>
+           <button id= "update"><i class="text-orange-400 mr-3 fa-solid fa-pen-to-square"></i></button>
+           <button id="delete"><i class=" text-orange-400 fa-solid fa-trash"></i></button>
          </div>
      </div>
   </div>`
@@ -93,9 +99,9 @@ function printdata() {
 // CLOUD FIRESTORE
 // GET  FIRESTORE DOCUMMENT AND PRINT HOME>HTML
 
-      async function getDataFromFirestore() {
-        arr.length = 0;
-        const q = query(collection(db, "usersdetails"), orderBy("postDate", "desc") , );
+      async function getDataFromFirestore(uid) {
+        arr.length = 0; 
+        const q = query(collection(db, "usersdetails"), orderBy("postDate", "desc") , where("uid" , "==" , uid ));
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc) => {
           arr.push({ ...doc.data(), docId: doc.id })
@@ -103,8 +109,6 @@ function printdata() {
         console.log(arr);
         printdata()
       }
-      
-      getDataFromFirestore();
 
 // ADD Document IN FIRESTORE
 
