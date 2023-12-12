@@ -8,24 +8,26 @@ let description = document.querySelector('#description')
 const usernames = document.querySelector("#names")
 
 const pimg = document.querySelector("#profileimg");
+  
 
-let uid;
+
+let userid;
 // IF USER IS NOT LOGIN SO RUN THIS FUNCTION
 onAuthStateChanged(auth, async (user) => {
   if (user) {
-     uid = user.uid;
-    console.log(uid);
-    const q = query(collection(db, "user"), where("uid", "==", uid));
+     userid = user.uid;
+    console.log(userid);
+    const q = query(collection(db, "user"), where("uid", "==", userid));
     const querySnapshot = await getDocs(q) 
     querySnapshot.forEach((item) => {
-      console.log(item.data().uid);
-      console.log(item.data().name);
-      console.log(item.data().posturl); 
+      // console.log(item.data().uid);
+      // console.log(item.data().name);
+      // console.log(item.data().posturl); 
       usernames.innerHTML = item.data().name
-      pimg.src = item.data().posturl
+      pimg.src = item.data().posturl 
   
   });
-  getDataFromFirestore(user.uid)
+  getDataFromFirestore(userid)
   } else {
     window.location = "index.html"
   }
@@ -44,8 +46,7 @@ logout.addEventListener("click", () => {
 
 
 
-  let arr = [];
-
+let arr = [];
 
 function printdata() {
   div.innerHTML = '';
@@ -96,26 +97,28 @@ function printdata() {
 
 
 
+
+
 // CLOUD FIRESTORE
 // GET  FIRESTORE DOCUMMENT AND PRINT HOME>HTML
 
       async function getDataFromFirestore(uid) {
         arr.length = 0; 
-        const q = query(collection(db, "usersdetails"), orderBy("postDate", "desc") , where("uid" , "==" , uid ));
+        const q = query(collection(db, "usersdetails"),  orderBy("postDate", "desc"), where("userid" , "==" , uid ) );
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc) => {
           arr.push({ ...doc.data(), docId: doc.id })
         });
-        console.log(arr);
         printdata()
+        console.log(arr);
       }
+      
 
 // ADD Document IN FIRESTORE
 
 
 submit.addEventListener("submit", async (e) => {
   e.preventDefault();
-
   try {
     const objdata =
     {
